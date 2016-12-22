@@ -24,7 +24,7 @@ class SignInController extends Controller
         });
         
         if(Request::type('ajax')) {
-        return Response::json(['data' => ['redirect'   => '/']])
+        return Response::json(['data' => ['redirect'   => '/']]);
         }
     }
 }
