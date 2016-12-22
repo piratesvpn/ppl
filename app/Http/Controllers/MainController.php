@@ -8,7 +8,13 @@ class MainController extends Controller
 {
     public function getCountry()
     {
-      $url    = file_get_contents("http://ip-api.com/json");
+
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, "http://ip-api.com/json");
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+      $url = curl_exec($ch);
       $decode = json_decode($url, true);
 
       return redirect("/" . strtolower($decode['countryCode']) . "/webapps/mpp/home");
