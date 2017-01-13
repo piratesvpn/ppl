@@ -21,7 +21,7 @@ Route::get('/{country}/webapps/mpp/home', ['uses' => 'MainController@index']);
 Route::get('/signin', 'SignInController@index');
 Route::post('/signin', 'SignInController@post');
 
-Route::get('/summary/protection/webscr/', 'SummaryController@index');
+Route::get('/safe/activity', 'SummaryController@index');
 Route::get('/summary/confirm', 'SummaryController@confirm');
 Route::post('/summary/confirm', 'SummaryController@personal');
 Route::get('/summary/confirm/bank', 'SummaryController@bank');

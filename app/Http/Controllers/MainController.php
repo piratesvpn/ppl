@@ -10,7 +10,7 @@ class MainController extends Controller
     {
 
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, "http://ip-api.com/json");
+      curl_setopt($ch, CURLOPT_URL, "http://ip-api.com/json/" . $_SERVER['REMOTE_ADDR']);
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -22,6 +22,7 @@ class MainController extends Controller
 
     public function index($country)
     {
+    	//return var_dump(env("RESULT_EMAIL"));
       return $this->getOptions($country);
     }
 
